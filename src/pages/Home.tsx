@@ -1,5 +1,5 @@
 import { IGitHubResponse, useFetch } from "../components/useFetch";
-import logo from "../nina_logo.png";
+import logo from "../logo-BLACK.webp";
 import "../styles.css";
 
 export const Home = () => {
@@ -20,9 +20,9 @@ export const Home = () => {
           </div>
           <div className="column">
             <div style={{ width: 350, margin: "auto" }}>
-              <h1 className="main-description">
+              <p className="main-description">
                 A collection of Tiny Tools for Autodesk Revit
-              </h1>
+              </p>
               <h2 className="small-title"> Download for Windows</h2>
               <button
                 className="button is-rounded is-black"

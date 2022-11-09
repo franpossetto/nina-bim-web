@@ -1,7 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&family=Roboto:wght@300&display=swap');
+@font-face {
+    font-family: "quan";
+    src: url(./assets/font/Quan.otf);
+}
+@font-face {
+    font-family: "quan-light";
+    src: url(./assets/font/Quan-Light.otf);
+}
+@font-face {
+    font-family: "quan-bold";
+    src: url(./assets/font/Quan-Bold.otf);
+}
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&family=Roboto:wght@300&display=swap'); */
 
 .main-description {
-    font-family: 'Raleway';
+    font-family: 'quan-light';
     font-size: 60px;
     color: black;
 }
@@ -9,7 +21,7 @@
 .small-title-bold {
     margin-left: 20px;
     padding-top: 320px;
-    font-family: 'Raleway';
+    font-family: 'quan-bold';
     font-size: 20px;
     font-weight: 700;
     color: black;
@@ -19,7 +31,7 @@
     margin-left: 20px;
     padding-top: 100px;
     padding-bottom: 10px;
-    font-family: 'Raleway';
+    font-family: 'quan-light';
     font-size: 15px;
     font-weight: 300;
     color: black;
@@ -27,7 +39,7 @@
 
 .small-subtitle {
     margin-left: 20px;
-    font-family: 'Raleway';
+    font-family: 'quan-light';
     font-size: 15px;
     font-weight: 300;
     color: black;
