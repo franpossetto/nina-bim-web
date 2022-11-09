@@ -1,5 +1,5 @@
 import { IGitHubResponse, useFetch } from "../components/useFetch";
-import logo from "../logo-BLACK.webp";
+import logo from "../assets/image/logo/day/nina_logo_black.webp";
 import "../styles.css";
 
 export const Home = () => {
@@ -12,13 +12,16 @@ export const Home = () => {
   return (
     <>
       <div className="container animate__animated animate__fadeIn">
-        <div className="columns" style={{ paddingTop: 120 }}>
-          <div className="column">
+        <div className="columns">
+          {/* Contenedor 1 */}
+          <div className="column is-half-desktop is-half-tablet is-full-mobile">
+
             <img src={logo} alt="logo" title="Are you seeing the cat?" className="animate__bounceIn" style={{width: "50%"}}/>
             <h2 className="small-title-bold"> Find more releases in GitHub</h2>
             <h2 className="small-subtitle"> Nina 2022 | Francisco Possetto </h2>
           </div>
-          <div className="column">
+          {/* Contenedor 2 */}
+          <div className="column is-half">
             <div style={{ width: 350, margin: "auto" }}>
               <p className="main-description">
                 A collection of Tiny Tools for Autodesk Revit
@@ -38,3 +41,8 @@ export const Home = () => {
     </>
   );
 };
+
+
+
+
+
