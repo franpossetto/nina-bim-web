@@ -21,8 +21,6 @@
 }
 
 .small-title-bold {
-    margin-left: 20px;
-    padding-top: 320px;
     font-family: 'quan-bold';
     font-size: 20px;
     font-weight: 700;
@@ -30,9 +28,6 @@
 }
 
 .small-title {
-    margin-left: 20px;
-    padding-top: 100px;
-    padding-bottom: 10px;
     font-family: 'quan-light';
     font-size: 15px;
     font-weight: 300;
@@ -40,7 +35,6 @@
 }
 
 .small-subtitle {
-    margin-left: 20px;
     font-family: 'quan-light';
     font-size: 15px;
     font-weight: 300;
