@@ -10,8 +10,10 @@
     font-family: "quan-bold";
     src: url(./assets/font/Quan-Bold.otf);
 }
-/* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&family=Roboto:wght@300&display=swap'); */
-
+.columns{
+    margin: 0 !important;
+    padding: 0;
+}
 .main-description {
     font-family: 'quan-light';
     font-size: 60px;
