@@ -10,46 +10,57 @@
     font-family: "quan-bold";
     src: url(./assets/font/Quan-Bold.otf);
 }
-.columns {
+.mainHome {
+    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
-    padding-top: 9vh;
-    padding-bottom: 12vh;
 }
-.animate__bounceIn {
-    margin-left: -1.2vw;
+.container {
+    max-width: 100vw;
+    height: 100vh;
+    padding: 0 7.3vw;
+}
+.mainHomeRow1 {
+    padding-top: 13.5vh;
+    
+}
+.mainHomeRow2 {
+    padding-bottom: 15.3vh;
 }
 .main-description {
-    margin-top: 4.7vh;
     font-family: 'quan-light';
     line-height: 1;
-    font-size: 5.3vw !important;
-    font-weight: 0;
+    font-size: 6.3rem;
     color: black;
+    margin-top: -1vh;
 }
-
+.btn {
+    margin-bottom: 1.5vh;
+}
 .small-title-bold {
     font-family: 'quan-bold';
-    font-size: 1.325vw;
+    font-size: 1.5rem;
     color: black;
     height: 1.405vw;
 }
 .small-title {
     font-family: 'quan-light';
-    font-size: 1.59vw;
+    font-size: 1.875rem;
     color: black;
 }
 
 .small-title-btn {
     font-family: 'quan-light';
-    font-size: 1.59vw;
+    font-size: 1.875rem;
     height: 78px;
     white-space: pre;
-    margin-left: -2vw;
+    margin-left: -0.6vw;
+    border-radius: 39px;
 }
 
 .small-subtitle {
     font-family: 'quan-light';
-    font-size: 1vw;
+    font-size: 1rem;
     color: black;
     height: 1.08vw;
 }
