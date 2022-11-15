@@ -8,6 +8,15 @@ export const Home = () => {
   const download = () => {
     window.location.assign(link);
   };
+
+  const screenIsSmall= () => {
+    if (window.innerWidth <= 1536) {
+      return true;
+    } else {
+      return false
+    }
+  }
+
   return (
     <>
       <main id="mainHome" className="container">
@@ -22,7 +31,7 @@ export const Home = () => {
               />
             </div>
             <div className="col-sm-4">
-              <h1 className="main-description">
+              <h1 className={screenIsSmall() ? "main-description small-text" : "main-description big-text"}>
                 A collection of tiny tools for Autodesk Revit.
               </h1>
             </div>

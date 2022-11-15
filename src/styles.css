@@ -18,7 +18,7 @@
 .container {
     max-width: 100vw;
     height: 100vh;
-    padding: 0 7.3vw;
+    padding: 0 5.8vw;
 }
 .mainHomeRow1 {
     padding-top: 13.5vh;
@@ -27,13 +27,22 @@
 .mainHomeRow2 {
     padding-bottom: 15.3vh;
 }
+
 .main-description {
     font-family: 'quan-light';
     line-height: 1;
-    font-size: 6.3rem;
     color: black;
     margin-top: -1vh;
 }
+
+.small-text {
+    font-size: 5rem;
+}
+
+.big-text {
+    font-size: 6.8rem;
+}
+
 .btn {
     margin-bottom: 1.5vh;
 }
@@ -51,10 +60,12 @@
 
 .small-title-btn {
     font-family: 'quan-light';
-    font-size: 1.875rem;
-    height: 78px;
+    font-size: 1.5rem;
+    height: 60px;
     white-space: pre;
     margin-left: -0.6vw;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 39px;
 }
 
