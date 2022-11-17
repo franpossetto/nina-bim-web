@@ -28,20 +28,21 @@
     padding-bottom: 15.3vh;
 }
 
-.main-description {
+.mainDescription {
     font-family: 'quan-light';
+    font-size: 6.8rem;
     line-height: 1;
     color: black;
     margin-top: -1vh;
 }
 
-.small-text {
+/* .small-text {
     font-size: 5rem;
 }
 
 .big-text {
     font-size: 6.8rem;
-}
+} */
 
 .btn {
     margin-bottom: 1.5vh;

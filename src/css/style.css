@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "quan";
+  src: url(./assets/font/Quan.otf);
+}
+@font-face {
+  font-family: "quan-light";
+  src: url(./assets/font/Quan-Light.otf);
+}
+@font-face {
+  font-family: "quan-bold";
+  src: url(./assets/font/Quan-Bold.otf);
+}
+#mainHome {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  padding: 0 5.8vw;
+}
+#mainHome .mainHomeContainer .mainHomeRow1 {
+  padding-top: 13.5vh;
+}
+#mainHome .mainHomeContainer .mainHomeRow1 .mainHomeDescription .mainDescription {
+  font-family: "quan-light";
+  line-height: 1;
+  color: black;
+  margin-top: -1vh;
+}
+#mainHome .mainHomeContainer .mainHomeRow2 {
+  padding-bottom: 15.3vh;
+}
+#mainHome .mainHomeContainer .mainHomeRow2 .mainHomeTitle .small-title-bold {
+  font-family: "quan-bold";
+  font-size: 1.5rem;
+  color: black;
+  height: 1.405vw;
+}
+#mainHome .mainHomeContainer .mainHomeRow2 .mainHomeTitle .small-subtitle {
+  font-family: "quan-light";
+  font-size: 1rem;
+  color: black;
+  height: 1.08vw;
+}
+#mainHome .mainHomeContainer .mainHomeRow2 .mainHomeDownload .small-title {
+  font-family: "quan-light";
+  font-size: 1.875rem;
+  color: black;
+}
+#mainHome .mainHomeContainer .mainHomeRow2 .mainHomeDownload .small-title-btn {
+  font-family: "quan-light";
+  font-size: 1.5rem;
+  height: 60px;
+  white-space: pre;
+  margin-left: -0.6vw;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 39px;
+  margin-bottom: 1.5vh;
+}
