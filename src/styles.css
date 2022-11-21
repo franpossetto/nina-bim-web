@@ -1,77 +1,55 @@
 @font-face {
-    font-family: "quan";
-    src: url(./assets/font/Quan.otf);
+  font-family: "quan";
+  src: url(./assets/font/Quan.otf);
 }
 @font-face {
-    font-family: "quan-light";
-    src: url(./assets/font/Quan-Light.otf);
+  font-family: "quan-light";
+  src: url(./assets/font/Quan-Light.otf);
 }
 @font-face {
-    font-family: "quan-bold";
-    src: url(./assets/font/Quan-Bold.otf);
+  font-family: "quan-bold";
+  src: url(./assets/font/Quan-Bold.otf);
 }
 #mainHome {
-    width: 100vw;
-    max-width: 100vw;
-    height: 100vh;
+  height: 100vh;
 }
 .mainHomeContainer {
-    max-width: 100vw;
-    height: 100vh;
-    padding: 0 5.8vw;
+  height: 100vh;
+  padding: 14.6775vh 0 5.871vh 0;
 }
 .mainHomeRow1 {
-    padding-top: 13.5vh;
-    
+  height: 45vh;
+}
+.mainHomeImg {
+  padding: 0 10vw 0 14vw;
+}
+.mainHomeDescription {
 }
 .mainDescription {
-    font-family: 'quan-light';
-    font-size: 5.6667vw;
-    line-height: 1;
-    color: black;
-    margin-top: -1vh;
+  font-family: "quan-light";
+  font-size: 9vw;
+  padding: 0 7.8vw 0 6vw;
 }
-
-/* .small-text {
-    font-size: 5rem;
-}
-
-.big-text {
-    font-size: 6.8rem;
-} */
-
 .mainHomeRow2 {
-    padding-bottom: 15.3vh;
+  height: 25vh;
 }
-.btn {
-    margin-bottom: 1.5vh;
+.mainHomeTitle {
 }
 .small-title-bold {
-    font-family: 'quan-bold';
-    font-size: 1.25vw;
-    color: black;
-    height: 1.405vw;
+  font-family: "quan-bold";
+  font-size: 3.68vw;
+}
+.small-subtitle {
+  font-family: "quan-light";
+  font-size: 15px;
+}
+.mainHomeDownload {
 }
 .small-title {
-    font-family: 'quan-light';
-    font-size: 1.5625vw;
-    color: black;
+  font-family: "quan-light";
+  font-size: 3.6vw;
 }
-
 .small-title-btn {
-    font-family: 'quan-light';
-    font-size: 1.25vw;
-    height: 3.125vw;
-    white-space: pre;
-    margin-left: -0.6vw;
-    padding-left: 1.5625vw;
-    padding-right: 1.5625vw;
-    border-radius: 2.03125vw;
-}
-
-.small-subtitle {
-    font-family: 'quan-light';
-    font-size: 0.8333vw;
-    color: black;
-    height: 1.08vw;
+  font-family: "quan-light";
+  font-size: 3.6vw;
 }

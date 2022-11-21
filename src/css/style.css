@@ -14,10 +14,12 @@
   width: 100vw;
   max-width: 100vw;
   height: 100vh;
+}
+#mainHome .mainHomeContainer {
   padding: 0 5.8vw;
 }
 #mainHome .mainHomeContainer .mainHomeRow1 {
-  padding-top: 13.5vh;
+  padding-top: 13.5vh !important;
 }
 #mainHome .mainHomeContainer .mainHomeRow1 .mainHomeDescription .mainDescription {
   font-family: "quan-light";

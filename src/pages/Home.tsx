@@ -9,20 +9,12 @@ export const Home = () => {
     window.location.assign(link);
   };
 
-  // const screenIsSmall = () => {
-  //   if (window.innerWidth <= 1536) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // };
-
   return (
     <>
       <main id="mainHome" className="container">
         <section className="container d-flex flex-column justify-content-between mainHomeContainer">
-          <div className="row d-flex justify-content-between mainHomeRow1">
-            <div className="col-sm-6 mainHomeImg">
+          <div className="row d-flex flex-column justify-content-between mainHomeRow1">
+            <div className="col-lg-6 mainHomeImg">
               <img
                 src={logo}
                 title="Are you seeing the cat?"
@@ -30,21 +22,20 @@ export const Home = () => {
                 alt="Nina company logo"
               />
             </div>
-            <div className="col-sm-4 mainHomeDescription">
-              {/* <h1 className={screenIsSmall() ? "main-description small-text" : "main-description big-text"}> */}
-              <h1 className="mainDescription">
+            <div className="col-lg-4 mainHomeDescription">
+              <h1 className="text-center text-lg-start mainDescription">
                 A collection of tiny tools for Autodesk Revit.
               </h1>
             </div>
           </div>
           {/*  */}
-          <div className="row d-flex justify-content-between align-items-end mainHomeRow2">
-            <div className="col-sm-4 mainHomeTitle">
+          <div className="row d-flex align-content-between flex-wrap-reverse mainHomeRow2">
+            <div className="col-lg-4 text-center text-lg-start  mainHomeTitle">
               <h2 className="small-title-bold">Find more releases in GitHub</h2>
               <h2 className="small-subtitle">Nina 2022 | Francisco Possetto</h2>
             </div>
-            <div className="col-sm-4 mainHomeDownload">
-              <h2 className="small-title">Download for Windows</h2>
+            <div className="col-lg-4 text-center text-lg-start mainHomeDownload">
+              <h2 className="text-center small-title">Download for Windows</h2>
               <button
                 type="button"
                 className="btn btn-dark small-title-btn"
