@@ -23,8 +23,6 @@
 .mainHomeImg {
   padding: 0 10vw 0 14vw;
 }
-.mainHomeDescription {
-}
 .mainDescription {
   font-family: "quan-light";
   color: black;
@@ -33,8 +31,6 @@
 }
 .mainHomeRow2 {
   height: 25vh;
-}
-.mainHomeTitle {
 }
 .small-title-bold {
   font-family: "quan-bold";
@@ -45,8 +41,6 @@
   font-family: "quan-light";
   color: black;
   font-size: 15px;
-}
-.mainHomeDownload {
 }
 .small-title {
   font-family: "quan-light";
