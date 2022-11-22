@@ -15,7 +15,7 @@
 }
 .mainHomeContainer {
   height: 100vh;
-  padding: 14.6775vh 0 5.871vh 0;
+  padding: 12vh 0 6vh 0;
 }
 .mainHomeRow1 {
   height: 45vh;
@@ -27,8 +27,9 @@
 }
 .mainDescription {
   font-family: "quan-light";
+  color: black;
   font-size: 9vw;
-  padding: 0 7.8vw 0 6vw;
+  padding: 0 7vw 0 6vw;
 }
 .mainHomeRow2 {
   height: 25vh;
@@ -37,19 +38,119 @@
 }
 .small-title-bold {
   font-family: "quan-bold";
-  font-size: 3.68vw;
+  color: black;
+  font-size: 18px;
 }
 .small-subtitle {
   font-family: "quan-light";
+  color: black;
   font-size: 15px;
 }
 .mainHomeDownload {
 }
 .small-title {
   font-family: "quan-light";
-  font-size: 3.6vw;
+  color: black;
+  font-size: 21px;
 }
 .small-title-btn {
   font-family: "quan-light";
-  font-size: 3.6vw;
+  font-size: 21px;
+  border-radius: 22.5px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .mainDescription {
+    font-size: 52px;
+  }
+  .small-title {
+    font-size: 3.6vw;
+  }
+  .small-title-btn {
+    font-size: 3.6vw;
+    border-radius: 3.914vw;
+  }
+  .small-title-bold {
+    font-size: 3.68vw;
+  }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .mainHomeImg {
+    padding: 0 14vw 0 18vw;
+  }
+  .small-title {
+    font-size: 28px;
+  }
+  .small-title-btn {
+    font-size: 28px;
+  }
+  .small-title-bold {
+    font-size: 28px;
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  html {
+    font-size: 100%;
+  }
+  #mainHome {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+  }
+  .mainHomeContainer {
+    max-width: 100vw;
+    height: 100vh;
+    padding: 6.979167vw 16vw 7.46667vw 13.9vw;
+  }
+  .mainHomeRow1 {
+    height: auto;
+  }
+  .mainHomeImg {
+    margin-top: -0.3vw;
+    padding: initial;
+  }
+  .mainDescription {
+    font-family: "quan-light";
+    font-size: 4.9vw;
+    line-height: 1;
+    margin-top: -1.2vw;
+    padding: unset;
+  }
+  .mainHomeRow2 {
+    height: auto;
+  }
+  .mainHomeTitle {
+    padding-top: 1.8vw;
+  }
+  .small-title-bold {
+    font-family: "quan-bold";
+    font-size: 1.5em;
+    height: 1.405vw;
+  }
+  .small-subtitle {
+    font-family: "quan-light";
+    font-size: 1em;
+    height: 1.08vw;
+  }
+  .small-title {
+    font-family: "quan-light";
+    font-size: 1.5625vw;
+    padding-left: 0.2vw;
+  }
+  .btn {
+    margin-bottom: 1.5vh;
+  }
+  .small-title-btn {
+    font-family: "quan-light";
+    font-size: 1.5625vw;
+    height: 3.125vw;
+    white-space: pre;
+    margin-left: -1.3vw;
+    padding-left: 1.5625vw;
+    padding-right: 1.5625vw;
+    border-radius: 2.03125vw;
+  }
 }
