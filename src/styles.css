@@ -10,44 +10,44 @@
   font-family: "quan-bold";
   src: url(./assets/font/Quan-Bold.otf);
 }
-#mainHome {
+#nina-main {
   height: 100vh;
 }
-.mainHomeContainer {
+.nina-container {
   height: 100vh;
   padding: 12vh 0 6vh 0;
 }
-.mainHomeRow1 {
+.nina-row-top {
   height: 45vh;
 }
-.mainHomeImg {
+.nina-img {
   padding: 0 10vw 0 14vw;
 }
-.mainDescription {
+.nina-description-title {
   font-family: "quan-light";
   color: black;
   font-size: 9vw;
   padding: 0 7vw 0 6vw;
 }
-.mainHomeRow2 {
+.nina-row-bottom {
   height: 25vh;
 }
-.small-title-bold {
+.nina-title-small-bold {
   font-family: "quan-bold";
   color: black;
   font-size: 18px;
 }
-.small-subtitle {
+.nina-subtitle-small {
   font-family: "quan-light";
   color: black;
   font-size: 15px;
 }
-.small-title {
+.nina-title-small {
   font-family: "quan-light";
   color: black;
   font-size: 21px;
 }
-.small-title-btn {
+.nina-title-small-btn {
   font-family: "quan-light";
   font-size: 21px;
   border-radius: 22.5px;
@@ -55,32 +55,32 @@
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
-  .mainDescription {
+  .nina-description-title {
     font-size: 52px;
   }
-  .small-title {
+  .nina-title-small {
     font-size: 3.6vw;
   }
-  .small-title-btn {
+  .nina-title-small-btn {
     font-size: 3.6vw;
     border-radius: 3.914vw;
   }
-  .small-title-bold {
+  .nina-title-small-bold {
     font-size: 3.68vw;
   }
 }
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  .mainHomeImg {
+  .nina-img {
     padding: 0 14vw 0 18vw;
   }
-  .small-title {
+  .nina-title-small {
     font-size: 28px;
   }
-  .small-title-btn {
+  .nina-title-small-btn {
     font-size: 28px;
   }
-  .small-title-bold {
+  .nina-title-small-bold {
     font-size: 28px;
   }
 }
@@ -89,55 +89,52 @@
   html {
     font-size: 100%;
   }
-  #mainHome {
+  #nina-main {
     width: 100vw;
     max-width: 100vw;
     height: 100vh;
   }
-  .mainHomeContainer {
+  .nina-container {
     max-width: 100vw;
     height: 100vh;
     padding: 6.979167vw 16vw 7.46667vw 13.9vw;
   }
-  .mainHomeRow1 {
+  .nina-row-top {
     height: auto;
   }
-  .mainHomeImg {
+  .nina-img {
     margin-top: -0.3vw;
     padding: initial;
   }
-  .mainDescription {
+  .nina-description-title {
     font-family: "quan-light";
     font-size: 4.9vw;
     line-height: 1;
     margin-top: -1.2vw;
     padding: unset;
   }
-  .mainHomeRow2 {
+  .nina-row-bottom {
     height: auto;
   }
-  .mainHomeTitle {
-    padding-top: 1.8vw;
+  .nina-title {
+    margin-top: 3vw !important;
   }
-  .small-title-bold {
+  .nina-title-small-bold {
     font-family: "quan-bold";
     font-size: 1.5em;
     height: 1.405vw;
   }
-  .small-subtitle {
+  .nina-subtitle-small {
     font-family: "quan-light";
     font-size: 1em;
     height: 1.08vw;
   }
-  .small-title {
+  .nina-title-small {
     font-family: "quan-light";
     font-size: 1.5625vw;
     padding-left: 0.2vw;
   }
-  .btn {
-    margin-bottom: 1.5vh;
-  }
-  .small-title-btn {
+  .nina-title-small-btn {
     font-family: "quan-light";
     font-size: 1.5625vw;
     height: 3.125vw;
@@ -146,5 +143,6 @@
     padding-left: 1.5625vw;
     padding-right: 1.5625vw;
     border-radius: 2.03125vw;
+    margin-bottom: 1.5vh;
   }
 }
