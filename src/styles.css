@@ -1,77 +1,148 @@
 @font-face {
-    font-family: "quan";
-    src: url(./assets/font/Quan.otf);
+  font-family: "quan";
+  src: url(./assets/font/Quan.otf);
 }
 @font-face {
-    font-family: "quan-light";
-    src: url(./assets/font/Quan-Light.otf);
+  font-family: "quan-light";
+  src: url(./assets/font/Quan-Light.otf);
 }
 @font-face {
-    font-family: "quan-bold";
-    src: url(./assets/font/Quan-Bold.otf);
+  font-family: "quan-bold";
+  src: url(./assets/font/Quan-Bold.otf);
 }
-.mainHome {
+#nina-main {
+  height: 100vh;
+}
+.nina-container {
+  height: 100vh;
+  padding: 12vh 0 6vh 0;
+}
+.nina-row-top {
+  height: 45vh;
+}
+.nina-img {
+  padding: 0 10vw 0 14vw;
+}
+.nina-description-title {
+  font-family: "quan-light";
+  color: black;
+  font-size: 9vw;
+  padding: 0 7vw 0 6vw;
+}
+.nina-row-bottom {
+  height: 25vh;
+}
+.nina-title-small-bold {
+  font-family: "quan-bold";
+  color: black;
+  font-size: 18px;
+}
+.nina-subtitle-small {
+  font-family: "quan-light";
+  color: black;
+  font-size: 15px;
+}
+.nina-title-small {
+  font-family: "quan-light";
+  color: black;
+  font-size: 21px;
+}
+.nina-title-small-btn {
+  font-family: "quan-light";
+  font-size: 21px;
+  border-radius: 22.5px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .nina-description-title {
+    font-size: 52px;
+  }
+  .nina-title-small {
+    font-size: 3.6vw;
+  }
+  .nina-title-small-btn {
+    font-size: 3.6vw;
+    border-radius: 3.914vw;
+  }
+  .nina-title-small-bold {
+    font-size: 3.68vw;
+  }
+}
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .nina-img {
+    padding: 0 14vw 0 18vw;
+  }
+  .nina-title-small {
+    font-size: 28px;
+  }
+  .nina-title-small-btn {
+    font-size: 28px;
+  }
+  .nina-title-small-bold {
+    font-size: 28px;
+  }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  html {
+    font-size: 100%;
+  }
+  #nina-main {
     width: 100vw;
     max-width: 100vw;
     height: 100vh;
-}
-.container {
+  }
+  .nina-container {
     max-width: 100vw;
     height: 100vh;
-    padding: 0 5.8vw;
-}
-.mainHomeRow1 {
-    padding-top: 13.5vh;
-    
-}
-.mainHomeRow2 {
-    padding-bottom: 15.3vh;
-}
-
-.main-description {
-    font-family: 'quan-light';
+    padding: 6.979167vw 16vw 7.46667vw 13.9vw;
+  }
+  .nina-row-top {
+    height: auto;
+  }
+  .nina-img {
+    margin-top: -0.3vw;
+    padding: initial;
+  }
+  .nina-description-title {
+    font-family: "quan-light";
+    font-size: 4.9vw;
     line-height: 1;
-    color: black;
-    margin-top: -1vh;
-}
-
-.small-text {
-    font-size: 5rem;
-}
-
-.big-text {
-    font-size: 6.8rem;
-}
-
-.btn {
-    margin-bottom: 1.5vh;
-}
-.small-title-bold {
-    font-family: 'quan-bold';
-    font-size: 1.5rem;
-    color: black;
+    margin-top: -1.2vw;
+    padding: unset;
+  }
+  .nina-row-bottom {
+    height: auto;
+  }
+  .nina-title {
+    margin-top: 3vw !important;
+  }
+  .nina-title-small-bold {
+    font-family: "quan-bold";
+    font-size: 1.5em;
     height: 1.405vw;
-}
-.small-title {
-    font-family: 'quan-light';
-    font-size: 1.875rem;
-    color: black;
-}
-
-.small-title-btn {
-    font-family: 'quan-light';
-    font-size: 1.5rem;
-    height: 60px;
-    white-space: pre;
-    margin-left: -0.6vw;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 39px;
-}
-
-.small-subtitle {
-    font-family: 'quan-light';
-    font-size: 1rem;
-    color: black;
+  }
+  .nina-subtitle-small {
+    font-family: "quan-light";
+    font-size: 1em;
     height: 1.08vw;
+  }
+  .nina-title-small {
+    font-family: "quan-light";
+    font-size: 1.5625vw;
+    padding-left: 0.2vw;
+  }
+  .nina-title-small-btn {
+    font-family: "quan-light";
+    font-size: 1.5625vw;
+    height: 3.125vw;
+    white-space: pre;
+    margin-left: -1.3vw;
+    padding-left: 1.5625vw;
+    padding-right: 1.5625vw;
+    border-radius: 2.03125vw;
+    margin-bottom: 1.5vh;
+  }
 }
