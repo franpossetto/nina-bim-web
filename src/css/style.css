@@ -1,14 +1,14 @@
 @font-face {
   font-family: "quan";
-  src: url(./assets/font/Quan.otf);
+  src: url(../assets/font/Quan.otf);
 }
 @font-face {
   font-family: "quan-light";
-  src: url(./assets/font/Quan-Light.otf);
+  src: url(../assets/font/Quan-Light.otf);
 }
 @font-face {
   font-family: "quan-bold";
-  src: url(./assets/font/Quan-Bold.otf);
+  src: url(../assets/font/Quan-Bold.otf);
 }
 #nina-main {
   height: 100vh;

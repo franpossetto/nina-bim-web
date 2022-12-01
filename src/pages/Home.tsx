@@ -1,6 +1,6 @@
 import { IGitHubResponse, useFetch } from "../components/useFetch";
 import logo from "../assets/image/logo/day/nina_logo_black.png";
-import "../styles.css";
+import "../css/style.css";
 
 export const Home = () => {
   const { release }: IGitHubResponse | any = useFetch();
@@ -11,7 +11,7 @@ export const Home = () => {
 
   return (
     <>
-      <main
+      <div
         id="nina-main"
         className="container animate__animated animate__fadeIn"
       >
@@ -31,7 +31,6 @@ export const Home = () => {
               </h1>
             </div>
           </div>
-          {/*  */}
           <div className="row d-flex flex-lg-row justify-content-between align-items-lg-end align-content-lg-end flex-wrap-reverse nina-row-bottom">
             <div className="col-lg-5 text-center text-lg-start nina-title">
               <h2 className="nina-title-small-bold">
@@ -50,12 +49,12 @@ export const Home = () => {
                 className="btn btn-dark nina-title-small-btn"
                 onClick={download}
               >
-                Latest Release<strong> {release?.name}-beta </strong>
+                Latest Release<strong> {release?.name} </strong>
               </button>
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 };
