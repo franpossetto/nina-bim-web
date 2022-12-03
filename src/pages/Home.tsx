@@ -1,5 +1,5 @@
 import { IGitHubResponse, useFetch } from "../components/useFetch";
-import logo from "../assets/image/logo/day/nina_logo_black.png";
+import logo from "../assets/image/logo/day/nina_logo_black.webp";
 import "../css/style.css";
 
 export const Home = () => {
