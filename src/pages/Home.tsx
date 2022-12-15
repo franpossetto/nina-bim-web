@@ -28,7 +28,7 @@ export const Home = () => {
   const [ninaLogo, setNinaLogo] = useState(logoday);
 
   useEffect(() => {
-    if (9 > 6 && 9 < 20) {
+    if (timeValue > 6 && timeValue < 20) {
       setIsDay(true);
     } else {
       setIsDay(false);
