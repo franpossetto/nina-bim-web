@@ -10,6 +10,18 @@
   font-family: "quan-bold";
   src: url(../assets/font/Quan-Bold.otf);
 }
+.nina-background-white {
+  background-color: white;
+}
+.nina-background-black {
+  background-color: black;
+}
+.nina-text-color-white {
+  color: white;
+}
+.nina-text-color-black {
+  color: black;
+}
 #nina-main {
   height: 100vh;
 }
@@ -25,7 +37,6 @@
 }
 .nina-description-title {
   font-family: "quan-light";
-  color: black;
   font-size: 9vw;
   padding: 0 7vw 0 6vw;
 }
@@ -34,17 +45,14 @@
 }
 .nina-title-small-bold {
   font-family: "quan-bold";
-  color: black;
   font-size: 18px;
 }
 .nina-subtitle-small {
   font-family: "quan-light";
-  color: black;
   font-size: 15px;
 }
 .nina-title-small {
   font-family: "quan-light";
-  color: black;
   font-size: 21px;
 }
 .nina-title-small-btn {
@@ -52,7 +60,6 @@
   font-size: 21px;
   border-radius: 22.5px;
 }
-
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .nina-description-title {
