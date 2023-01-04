@@ -19,9 +19,7 @@ export const Home = () => {
   const download = () => {
     window.location.assign(link);
   };
-  // const isday: boolean = false;
-  // const { sunrise }: ISunriseResponse | any = useSunrise();
-  // // console.log(sunrise);
+  
   const [isDay, setIsDay] = useState<boolean>(false);
   const userTime = new Date();
   const timeValue = userTime.getHours();
