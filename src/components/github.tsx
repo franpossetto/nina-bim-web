@@ -13,7 +13,6 @@ export const GitHub = () => {
         />
         <link rel="canonical" href="/github" />
       </Helmet>
-      ;
     </>
   );
 };
