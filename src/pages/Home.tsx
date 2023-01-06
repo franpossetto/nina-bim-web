@@ -12,6 +12,7 @@ import {
   ninaTitleSmall,
   ninaTitleSmallBold,
 } from "../helpers/style";
+import { Helmet } from "react-helmet-async";
 
 export const Home = () => {
   const { release }: IGitHubResponse | any = useFetch();
@@ -19,7 +20,7 @@ export const Home = () => {
   const download = () => {
     window.location.assign(link);
   };
-  
+
   const [isDay, setIsDay] = useState<boolean>(false);
   const userTime = new Date();
   const timeValue = userTime.getHours();
@@ -81,6 +82,14 @@ export const Home = () => {
           </div>
         </section>
       </div>
+      <Helmet>
+        <title>GitHub</title>
+        <meta
+          name="description"
+          content="A collection of tiny tools to work faster in Revit. Most of these commands are availables in Revit but as options in second windows."
+        />
+        <link rel="canonical" href="https://www.ninabim.com" />
+      </Helmet>
     </>
   );
 };
