@@ -30,6 +30,30 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      // Set body background BEFORE React mounts to prevent flash
+      (function() {
+        var isDay = false;
+        try {
+          var cached = localStorage.getItem('sunriseSunset');
+          if (cached) {
+            var data = JSON.parse(cached);
+            var now = new Date();
+            isDay = now > new Date(data.sunrise) && now < new Date(data.sunset);
+          } else {
+            var hour = new Date().getHours();
+            isDay = hour >= 7 && hour < 20;
+          }
+        } catch(e) {
+          var h = new Date().getHours();
+          isDay = h >= 7 && h < 20;
+        }
+        document.body.style.backgroundColor = isDay ? 'white' : 'black';
+        // Also update favicon
+        var fav = document.getElementById('dynamic-favicon');
+        if (fav) fav.href = isDay ? '%PUBLIC_URL%/favicon-day.png' : '%PUBLIC_URL%/favicon-night.png';
+      })();
+    </script>
     <!-- Contenedor root para React -->
     <div id="root"></div>
     <script

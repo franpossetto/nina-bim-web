@@ -20,13 +20,26 @@ const isDaytimeInMorteros = (sunrise: string, sunset: string): boolean => {
   return now > new Date(sunrise) && now < new Date(sunset);
 };
 
+const getInitialIsDay = (): boolean => {
+  try {
+    const cached = localStorage.getItem("sunriseSunset");
+    if (cached) {
+      const { sunrise, sunset } = JSON.parse(cached);
+      return isDaytimeInMorteros(sunrise, sunset);
+    }
+  } catch {}
+  // Fallback: estimate based on typical Morteros daylight hours (UTC-3)
+  const hour = new Date().getHours();
+  return hour >= 7 && hour < 20;
+};
+
 export const Home = () => {
   const { release }: IGitHubResponse | any = useFetch();
   const { sunriseSunset } = useSunriseSunset();
   const link: string = release?.asset;
 
-  const [isDay, setIsDay] = useState<boolean>(false);
-  const [ninaLogo, setNinaLogo] = useState(logonight);
+  const [isDay, setIsDay] = useState<boolean>(() => getInitialIsDay());
+  const [ninaLogo, setNinaLogo] = useState(() => getInitialIsDay() ? logoday : logonight);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   useEffect(() => {
