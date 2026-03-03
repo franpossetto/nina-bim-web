@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 export interface IGitHubResponse {
@@ -6,29 +5,34 @@ export interface IGitHubResponse {
     tag: string,
     asset: string
 }
-export const useFetch =  () => {
+export const useFetch = () => {
     const [release, setRelease] = useState<IGitHubResponse>();
     const [loading, setLoading] = useState<boolean>();
     const [error, setError] = useState<boolean>();
 
-
-    useEffect( ()=> {
+    useEffect(() => {
         setLoading(true);
         setError(false);
-         axios.get("https://api.github.com/repos/franpossetto/Nina/releases").then((response) => {
-         const resp = response.data[0];
-         const latestRelease: IGitHubResponse = {
-            name: resp.name,
-            tag: resp.tag_name,
-            asset: resp.assets[0].browser_download_url
-         }
-         setRelease(latestRelease);
-        }).catch( ()=> {
-            setError(true);
-        }).finally(()=> {
-            setLoading(false);
-        });
-    },[])
-    return {release, error, loading};
-    
+        fetch("https://api.github.com/repos/franpossetto/Nina/releases")
+            .then((res) => {
+                if (!res.ok) throw new Error("Network response was not ok");
+                return res.json();
+            })
+            .then((data) => {
+                const resp = data[0];
+                const latestRelease: IGitHubResponse = {
+                    name: resp.name,
+                    tag: resp.tag_name,
+                    asset: resp.assets[0].browser_download_url
+                };
+                setRelease(latestRelease);
+            })
+            .catch(() => {
+                setError(true);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
+    return { release, error, loading };
 };
