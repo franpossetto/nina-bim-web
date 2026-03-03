@@ -10,20 +10,67 @@
     <meta name="robots" content="index, follow" />
     
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Nina for Revit" />
+    <meta property="og:title" content="Nina for Revit | Tiny tools to work faster" />
     <meta property="og:description" content="A collection of tiny tools to work faster in Autodesk Revit. Quick access to commands using keyboard shortcuts." />
+    <meta property="og:url" content="https://ninabim.com/" />
+    <meta property="og:image" content="https://ninabim.com/ninabim-social.png" />
     <meta property="og:site_name" content="Nina for Revit" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nina for Revit | Tiny tools to work faster" />
+    <meta name="twitter:description" content="A collection of tiny tools to work faster in Autodesk Revit. Quick access to commands using keyboard shortcuts." />
+    <meta name="twitter:image" content="https://ninabim.com/ninabim-social.png" />
+    
+    <!-- URL Canónica -->
+    <link rel="canonical" href="https://ninabim.com/" />
 
     <link id="dynamic-favicon" rel="icon" type="image/png" href="%PUBLIC_URL%/favicon-night.png" />
     <meta name="theme-color" content="#000000" />
     
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+    <link rel="preconnect" href="https://api.sunrise-sunset.org" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://api.github.com" crossorigin="anonymous" />
+    
+    <!-- Preload y carga asíncrona de Bootstrap -->
+    <link 
+      rel="preload" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
+      as="style" 
+      onload="this.onload=null;this.rel='stylesheet'"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <noscript>
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous"
+      />
+    </noscript>
+
+    <!-- Datos Estructurados JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Nina for Revit",
+        "operatingSystem": "Windows",
+        "applicationCategory": "BIM Tool",
+        "description": "A collection of tiny tools to work faster in Autodesk Revit. Quick access to commands using keyboard shortcuts, saving you clicks and time.",
+        "url": "https://ninabim.com/",
+        "author": {
+          "@type": "Person",
+          "name": "Francisco Possetto"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

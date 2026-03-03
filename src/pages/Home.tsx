@@ -85,7 +85,8 @@ export const Home = () => {
                   alt="Nina for Revit - Company Logo"
                   width="1140"
                   height="450"
-                  decoding="async"
+                  {...{ fetchPriority: "high" }}
+                  decoding="sync"
                 />
                 
                 <div 

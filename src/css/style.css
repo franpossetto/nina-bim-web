@@ -1,14 +1,17 @@
 @font-face {
   font-family: "quan";
   src: url(../assets/font/Quan-Book.otf);
+  font-display: swap;
 }
 @font-face {
   font-family: "quan-light";
   src: url(../assets/font/Quan-Light.otf);
+  font-display: swap;
 }
 @font-face {
   font-family: "quan-bold";
   src: url(../assets/font/Quan-Bold.otf);
+  font-display: swap;
 }
 .nina-background-white {
   background-color: white;
