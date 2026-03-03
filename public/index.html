@@ -16,7 +16,7 @@
     <meta property="og:description" content="A collection of tiny tools to work faster in Autodesk Revit. Quick access to commands using keyboard shortcuts." />
     <meta property="og:site_name" content="Nina for Revit" />
 
-    <!-- Dinamic Favicon placeholder (Changed by React logic) -->
+    <!-- Dynamic Favicon placeholder (Changed by React logic) -->
     <link id="dynamic-favicon" rel="icon" type="image/png" href="%PUBLIC_URL%/favicon-night.png" />
     <meta name="theme-color" content="#000000" />
     
@@ -39,19 +39,28 @@
           if (cached) {
             var data = JSON.parse(cached);
             var now = new Date();
-            isDay = now > new Date(data.sunrise) && now < new Date(data.sunset);
+            var today = now.toISOString().split("T")[0];
+            if (!data.date || data.date === today) {
+              isDay = now > new Date(data.sunrise) && now < new Date(data.sunset);
+            } else {
+              var utcHour = new Date().getUTCHours();
+              var morterosHour = (utcHour - 3 + 24) % 24;
+              isDay = morterosHour >= 7 && morterosHour < 20;
+            }
           } else {
-            var hour = new Date().getHours();
-            isDay = hour >= 7 && hour < 20;
+            var utcHour = new Date().getUTCHours();
+            var morterosHour = (utcHour - 3 + 24) % 24;
+            isDay = morterosHour >= 7 && morterosHour < 20;
           }
         } catch(e) {
-          var h = new Date().getHours();
-          isDay = h >= 7 && h < 20;
+          var utcH = new Date().getUTCHours();
+          var morterosH = (utcH - 3 + 24) % 24;
+          isDay = morterosH >= 7 && morterosH < 20;
         }
         document.body.style.backgroundColor = isDay ? 'white' : 'black';
         // Also update favicon
         var fav = document.getElementById('dynamic-favicon');
-        if (fav) fav.href = isDay ? '%PUBLIC_URL%/favicon-day.png' : '%PUBLIC_URL%/favicon-night.png';
+        if (fav) fav.href = isDay ? './favicon-day.png' : './favicon-night.png';
       })();
     </script>
     <!-- Contenedor root para React -->

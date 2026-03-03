@@ -3,10 +3,6 @@ User-agent: *
 Allow: /
 
 # Evitar que los rastreadores indexen archivos irrelevantes
-Disallow: /static/
-Disallow: /*.json$
-Disallow: /*.js$
-Disallow: /*.css$
 
 # Para cuando tengas dominio propio, aquí irá el sitemap
 # Sitemap: https://tudominio.com/sitemap.xml

@@ -24,13 +24,17 @@ const getInitialIsDay = (): boolean => {
   try {
     const cached = localStorage.getItem("sunriseSunset");
     if (cached) {
-      const { sunrise, sunset } = JSON.parse(cached);
-      return isDaytimeInMorteros(sunrise, sunset);
+      const { sunrise, sunset, date } = JSON.parse(cached);
+      const today = new Date().toISOString().split("T")[0];
+      if (!date || date === today) {
+        return isDaytimeInMorteros(sunrise, sunset);
+      }
     }
   } catch {}
-  // Fallback: estimate based on typical Morteros daylight hours (UTC-3)
-  const hour = new Date().getHours();
-  return hour >= 7 && hour < 20;
+  // Fallback: estimate based on typical Morteros daylight hours (UTC-3),
+  // using UTC time converted to Morteros local time (UTC-3).
+  const morterosHour = (new Date().getUTCHours() - 3 + 24) % 24;
+  return morterosHour >= 7 && morterosHour < 20;
 };
 
 export const Home = () => {
@@ -38,8 +42,9 @@ export const Home = () => {
   const { sunriseSunset } = useSunriseSunset();
   const link: string = release?.asset;
 
-  const [isDay, setIsDay] = useState<boolean>(() => getInitialIsDay());
-  const [ninaLogo, setNinaLogo] = useState(() => getInitialIsDay() ? logoday : logonight);
+  const initialIsDay = getInitialIsDay();
+  const [isDay, setIsDay] = useState<boolean>(initialIsDay);
+  const [ninaLogo, setNinaLogo] = useState(initialIsDay ? logoday : logonight);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   useEffect(() => {
@@ -125,7 +130,7 @@ export const Home = () => {
                 Nina 2022 | Francisco Possetto
               </p>
             </article>
-            <nav className="col-lg-4 text-center text-lg-start nina-download" aria-label="Download section">
+            <div className="col-lg-4 text-center text-lg-start nina-download" aria-label="Download section">
               <h2 className={ninaTitleSmall(isDay)}>Download for Windows</h2>
               <button
                 type="button"
@@ -135,7 +140,7 @@ export const Home = () => {
               >
                 Latest Release<strong> {release?.name} </strong>
               </button>
-            </nav>
+            </div>
           </div>
         </section>
       </div>

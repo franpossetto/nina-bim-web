@@ -31,7 +31,8 @@ export const useSunriseSunset = (): UseSunriseSunsetResult => {
         const { sunrise, sunset } = response.data.results;
         setSunriseSunset({ sunrise, sunset });
         try {
-          localStorage.setItem("sunriseSunset", JSON.stringify({ sunrise, sunset }));
+          const date = new Date().toISOString().split("T")[0];
+          localStorage.setItem("sunriseSunset", JSON.stringify({ sunrise, sunset, date }));
         } catch {}
       })
       .catch(() => {
