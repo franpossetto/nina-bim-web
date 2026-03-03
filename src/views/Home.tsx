@@ -51,6 +51,10 @@ export const Home = () => {
   const ninaLogo = isDay ? logoday : logonight;
 
   useEffect(() => {
+    setIsDay(getInitialIsDay());
+  }, []);
+
+  useEffect(() => {
     if (!sunriseSunset) return;
     const daytime = isDaytimeInMorteros(sunriseSunset.sunrise, sunriseSunset.sunset);
     setIsDay(daytime);
