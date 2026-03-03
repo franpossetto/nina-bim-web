@@ -1,27 +1,39 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export interface ISunriseResponse {
+const MORTEROS_LAT = -30.7167;
+const MORTEROS_LNG = -62.0167;
+const SUNRISE_SUNSET_API = `https://api.sunrise-sunset.org/json?lat=${MORTEROS_LAT}&lng=${MORTEROS_LNG}&formatted=0`;
+
+export interface ISunriseSunset {
   sunrise: string;
   sunset: string;
 }
-export const useSunrise = () => {
-  const [sunrise, setSunrise] = useState<ISunriseResponse>();
-  const [loading, setLoading] = useState<boolean>();
-  const [error, setError] = useState<boolean>();
+
+interface UseSunriseSunsetResult {
+  sunriseSunset: ISunriseSunset | undefined;
+  loading: boolean;
+  error: boolean;
+}
+
+export const useSunriseSunset = (): UseSunriseSunsetResult => {
+  const [sunriseSunset, setSunriseSunset] = useState<ISunriseSunset | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
     setError(false);
+
     axios
-      .get("https://api.sunrise-sunset.org/json?lat=-38.416097&lng=-20.616672")
+      .get(SUNRISE_SUNSET_API)
       .then((response) => {
-        const resp = response.data.results;
-        const latestSunrise: ISunriseResponse = {
-          sunrise: resp.sunrise,
-          sunset: resp.sunset,
-        };
-        setSunrise(latestSunrise);
+        const { sunrise, sunset } = response.data.results;
+        setSunriseSunset({ sunrise, sunset });
+        try {
+          const date = new Date().toISOString().split("T")[0];
+          localStorage.setItem("sunriseSunset", JSON.stringify({ sunrise, sunset, date }));
+        } catch {}
       })
       .catch(() => {
         setError(true);
@@ -30,5 +42,6 @@ export const useSunrise = () => {
         setLoading(false);
       });
   }, []);
-  return { sunrise, error, loading };
+
+  return { sunriseSunset, loading, error };
 };
