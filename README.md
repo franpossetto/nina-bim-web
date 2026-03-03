@@ -25,7 +25,7 @@ Builds the app for production in the `out/` folder. Runs a PurgeCSS post-build s
 
 #### `npm start`
 
-Starts a Next.js production server (requires a prior `npm run build`).
+Serves the exported `out/` directory with a local static file server. Run `npm run build` first to generate the `out/` folder.
 
 ## Deployment
 

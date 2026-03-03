@@ -106,6 +106,8 @@ export default function RootLayout({
                 isDay = fallbackHour();
               }
               document.body.style.backgroundColor = isDay ? 'white' : 'black';
+              var favicon = document.getElementById('dynamic-favicon');
+              if (favicon) { favicon.href = isDay ? '/favicon-day.png' : '/favicon-night.png'; }
             })();
             `
           }}

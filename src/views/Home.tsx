@@ -28,7 +28,11 @@ const getInitialIsDay = (): boolean => {
     if (cached) {
       const { sunrise, sunset, date } = JSON.parse(cached);
       const today = new Date().toISOString().split("T")[0];
-      if (date === today) {
+      if (
+        typeof date === "string" && date === today &&
+        typeof sunrise === "string" && typeof sunset === "string" &&
+        !isNaN(new Date(sunrise).getTime()) && !isNaN(new Date(sunset).getTime())
+      ) {
         return isDaytimeInMorteros(sunrise, sunset);
       }
     }
@@ -43,8 +47,8 @@ export const Home = () => {
   const link = release?.asset;
 
   const [isDay, setIsDay] = useState<boolean>(getInitialIsDay);
-  const [ninaLogo, setNinaLogo] = useState(() => getInitialIsDay() ? logoday : logonight);
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const ninaLogo = isDay ? logoday : logonight;
 
   useEffect(() => {
     if (!sunriseSunset) return;
@@ -53,8 +57,6 @@ export const Home = () => {
   }, [sunriseSunset]);
 
   useEffect(() => {
-    setNinaLogo(isDay ? logoday : logonight);
-    
     const faviconLink = document.getElementById("dynamic-favicon") as HTMLLinkElement;
     if (faviconLink) {
       faviconLink.href = isDay

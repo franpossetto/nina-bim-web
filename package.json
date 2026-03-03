@@ -18,13 +18,13 @@
     "react-dom": "^18.2.0",
     "react-tooltip": "^5.30.0",
     "sharp": "^0.34.5",
-    "typescript": "^4.8.4",
+    "typescript": "^5.1.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/purgecss.mjs",
-    "start": "next start",
+    "start": "npx serve out",
     "lint": "next lint"
   },
   "eslintConfig": {

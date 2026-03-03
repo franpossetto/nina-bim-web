@@ -32,6 +32,9 @@ pnpm-debug.log*
 .eslintcache
 .npm/
 
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
 # IDEs and Editors
 .vscode/
 .idea/

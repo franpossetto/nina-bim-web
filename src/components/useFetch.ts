@@ -7,8 +7,8 @@ export interface IGitHubResponse {
 }
 export const useFetch = () => {
     const [release, setRelease] = useState<IGitHubResponse>();
-    const [loading, setLoading] = useState<boolean>();
-    const [error, setError] = useState<boolean>();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
 
     useEffect(() => {
         setLoading(true);
@@ -19,7 +19,9 @@ export const useFetch = () => {
                 return res.json();
             })
             .then((data) => {
+                if (!Array.isArray(data) || data.length === 0) return;
                 const resp = data[0];
+                if (!resp?.assets || resp.assets.length === 0 || !resp.assets[0]?.browser_download_url) return;
                 const latestRelease: IGitHubResponse = {
                     name: resp.name,
                     tag: resp.tag_name,

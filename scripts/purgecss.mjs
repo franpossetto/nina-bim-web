@@ -40,23 +40,27 @@ const cssFiles = readdirSync(CSS_DIR).filter((f) => f.endsWith(".css"));
 console.log(`\n🧹 PurgeCSS: processing ${cssFiles.length} CSS file(s)…`);
 
 for (const file of cssFiles) {
-  const filePath = `${CSS_DIR}/${file}`;
-  const before = statSync(filePath).size;
+  try {
+    const filePath = `${CSS_DIR}/${file}`;
+    const before = statSync(filePath).size;
 
-  const result = await new PurgeCSS().purge({
-    content: CONTENT_GLOBS,
-    css: [filePath],
-    safelist: SAFELIST,
-    defaultExtractor: (content) => content.match(/[\w-/:[\]]+/g) || [],
-  });
+    const result = await new PurgeCSS().purge({
+      content: CONTENT_GLOBS,
+      css: [filePath],
+      safelist: SAFELIST,
+      defaultExtractor: (content) => content.match(/[\w-/:,[\]]+/g) || [],
+    });
 
-  if (result[0]?.css) {
-    writeFileSync(filePath, result[0].css);
-    const after = Buffer.byteLength(result[0].css);
-    const saved = ((1 - after / before) * 100).toFixed(1);
-    console.log(
-      `  ✓ ${file}  ${(before / 1024).toFixed(1)} KB → ${(after / 1024).toFixed(1)} KB  (-${saved}%)`
-    );
+    if (result[0]?.css) {
+      writeFileSync(filePath, result[0].css);
+      const after = Buffer.byteLength(result[0].css);
+      const saved = before > 0 ? ((1 - after / before) * 100).toFixed(1) : "0.0";
+      console.log(
+        `  ✓ ${file}  ${(before / 1024).toFixed(1)} KB → ${(after / 1024).toFixed(1)} KB  (-${saved}%)`
+      );
+    }
+  } catch (err) {
+    console.error(`  ✗ ${file}: ${err instanceof Error ? err.message : err}`);
   }
 }
 

@@ -21,10 +21,11 @@ export const useSunriseSunset = (): UseSunriseSunsetResult => {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
+    const controller = new AbortController();
     setLoading(true);
     setError(false);
 
-    fetch(SUNRISE_SUNSET_API)
+    fetch(SUNRISE_SUNSET_API, { signal: controller.signal })
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
         return res.json();
@@ -45,12 +46,15 @@ export const useSunriseSunset = (): UseSunriseSunsetResult => {
           }
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.name === "AbortError") return;
         setError(true);
       })
       .finally(() => {
         setLoading(false);
       });
+
+    return () => controller.abort();
   }, []);
 
   return { sunriseSunset, loading, error };
