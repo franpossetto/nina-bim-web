@@ -4,37 +4,38 @@ Nina for Revit is a collection of tiny tools designed to speed up your workflow 
 
 ## Key Features
 
-- **Dynamic Theming**: The website automatically switches between Light and Dark mode based on the real-time sunrise and sunset in Morteros, Córdoba (using the [Sunrise-Sunset API](https://api.sunrise-sunset.org/)).
-- **SEO Optimized**: Semantic HTML5, meta tags, Open Graph support, and Netlify redirection rules for better indexing.
-- **Modern UI**: Clean design with custom tooltips (react-tooltip) and smooth animations (animate.css).
+- **Dynamic Theming**: Automatically switches between Light and Dark mode based on real-time sunrise and sunset in Morteros, Córdoba (using the [Sunrise-Sunset API](https://api.sunrise-sunset.org/)).
+- **SEO Optimized**: Semantic HTML5, Open Graph, Twitter Cards, Schema.org structured data (JSON-LD), canonical URL, and sitemap.
+- **Performance Optimized**: Static Site Generation (SSG) via Next.js, PurgeCSS post-build step, native `fetch` API, `font-display: swap`, and `fetchPriority="high"` on the LCP image.
+- **Modern UI**: Custom tooltips (react-tooltip) and smooth animations (inline keyframes).
 
 ## Development
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses [Next.js 14](https://nextjs.org/) with the App Router and static export.
 
 ### Available Scripts
 
-In the project directory, you can run:
+#### `npm run dev`
 
-#### `npm start`
-
-Runs the app in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in development mode at [http://localhost:3000](http://localhost:3000).
 
 #### `npm run build`
 
-Builds the app for production in the `build` folder.
-Optimized for best performance and ready for deployment on Netlify.
+Builds the app for production in the `out/` folder. Runs a PurgeCSS post-build step automatically to strip unused Bootstrap CSS.
+
+#### `npm start`
+
+Starts a Next.js production server (requires a prior `npm run build`).
 
 ## Deployment
 
-The project is configured for deployment on **Netlify**. It includes a `public/_redirects` file to handle Single Page Application (SPA) routing correctly.
+The project outputs a fully static site to the `out/` folder, configured for deployment on **Netlify**. It includes a `public/_redirects` file to handle routing correctly.
 
 ## Technologies
 
+- Next.js 14 (App Router, Static Export)
 - React 18
 - TypeScript
-- Axios
-- React Tooltip
 - Bootstrap 5
-- Animate.css
+- React Tooltip
+- PurgeCSS (post-build)
