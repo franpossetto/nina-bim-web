@@ -3,20 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- SEO Meta Tags -->
     <title>Nina for Revit | Tiny tools to work faster</title>
     <meta name="description" content="A collection of tiny tools to work faster in Autodesk Revit. Quick access to commands using keyboard shortcuts, saving you clicks and time." />
     <meta name="keywords" content="Revit, Autodesk Revit, BIM tools, Revit plugins, Nina for Revit, Revit shortcuts, Francisco Possetto, BIM development" />
     <meta name="author" content="Francisco Possetto" />
     <meta name="robots" content="index, follow" />
     
-    <!-- Open Graph / LinkedIn / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Nina for Revit" />
     <meta property="og:description" content="A collection of tiny tools to work faster in Autodesk Revit. Quick access to commands using keyboard shortcuts." />
     <meta property="og:site_name" content="Nina for Revit" />
 
-    <!-- Dynamic Favicon placeholder (Changed by React logic) -->
     <link id="dynamic-favicon" rel="icon" type="image/png" href="%PUBLIC_URL%/favicon-night.png" />
     <meta name="theme-color" content="#000000" />
     
@@ -31,39 +28,40 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script>
-      // Set body background BEFORE React mounts to prevent flash
       (function() {
         var isDay = false;
+        var fallbackHour = function() {
+          var utcHour = new Date().getUTCHours();
+          var morterosHour = (utcHour - 3 + 24) % 24;
+          return morterosHour >= 7 && morterosHour < 20;
+        };
         try {
           var cached = localStorage.getItem('sunriseSunset');
           if (cached) {
             var data = JSON.parse(cached);
             var now = new Date();
             var today = now.toISOString().split("T")[0];
-            if (!data.date || data.date === today) {
+            if (data.date === today && data.sunrise && data.sunset) {
               isDay = now > new Date(data.sunrise) && now < new Date(data.sunset);
             } else {
-              var utcHour = new Date().getUTCHours();
-              var morterosHour = (utcHour - 3 + 24) % 24;
-              isDay = morterosHour >= 7 && morterosHour < 20;
+              isDay = fallbackHour();
             }
           } else {
-            var utcHour = new Date().getUTCHours();
-            var morterosHour = (utcHour - 3 + 24) % 24;
-            isDay = morterosHour >= 7 && morterosHour < 20;
+            isDay = fallbackHour();
           }
         } catch(e) {
-          var utcH = new Date().getUTCHours();
-          var morterosH = (utcH - 3 + 24) % 24;
-          isDay = morterosH >= 7 && morterosH < 20;
+          isDay = fallbackHour();
         }
         document.body.style.backgroundColor = isDay ? 'white' : 'black';
-        // Also update favicon
         var fav = document.getElementById('dynamic-favicon');
-        if (fav) fav.href = isDay ? './favicon-day.png' : './favicon-night.png';
+        if (fav) {
+          var originalHref = fav.getAttribute('href') || fav.href;
+          var dayHref = originalHref.replace('favicon-night.png', 'favicon-day.png');
+          var nightHref = originalHref.replace('favicon-day.png', 'favicon-night.png');
+          fav.href = isDay ? dayHref : nightHref;
+        }
       })();
     </script>
-    <!-- Contenedor root para React -->
     <div id="root"></div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

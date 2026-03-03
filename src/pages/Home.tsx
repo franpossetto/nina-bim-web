@@ -26,13 +26,11 @@ const getInitialIsDay = (): boolean => {
     if (cached) {
       const { sunrise, sunset, date } = JSON.parse(cached);
       const today = new Date().toISOString().split("T")[0];
-      if (!date || date === today) {
+      if (date === today) {
         return isDaytimeInMorteros(sunrise, sunset);
       }
     }
   } catch {}
-  // Fallback: estimate based on typical Morteros daylight hours (UTC-3),
-  // using UTC time converted to Morteros local time (UTC-3).
   const morterosHour = (new Date().getUTCHours() - 3 + 24) % 24;
   return morterosHour >= 7 && morterosHour < 20;
 };
@@ -42,9 +40,8 @@ export const Home = () => {
   const { sunriseSunset } = useSunriseSunset();
   const link: string = release?.asset;
 
-  const initialIsDay = getInitialIsDay();
-  const [isDay, setIsDay] = useState<boolean>(initialIsDay);
-  const [ninaLogo, setNinaLogo] = useState(initialIsDay ? logoday : logonight);
+  const [isDay, setIsDay] = useState<boolean>(getInitialIsDay);
+  const [ninaLogo, setNinaLogo] = useState(() => getInitialIsDay() ? logoday : logonight);
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   useEffect(() => {
@@ -56,7 +53,6 @@ export const Home = () => {
   useEffect(() => {
     setNinaLogo(isDay ? logoday : logonight);
     
-    // Cambiar dinámicamente el favicon según isDay
     const faviconLink = document.getElementById("dynamic-favicon") as HTMLLinkElement;
     if (faviconLink) {
       faviconLink.href = isDay 
@@ -66,6 +62,7 @@ export const Home = () => {
   }, [isDay]);
 
   const download = () => {
+    if (!link) return;
     window.location.assign(link);
   };
   return (
@@ -86,7 +83,6 @@ export const Home = () => {
                   src={ninaLogo}
                   className="img-fluid animate__bounceIn"
                   alt="Nina for Revit - Company Logo"
-                  style={{ cursor: "pointer" }}
                   width="1140"
                   height="450"
                   decoding="async"
@@ -135,6 +131,7 @@ export const Home = () => {
               <button
                 type="button"
                 className={ninaBtnColor(isDay)}
+                disabled={!link}
                 onClick={download}
                 aria-label={`Download latest release ${release?.name || ''}`}
               >

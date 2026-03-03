@@ -1,8 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# Evitar que los rastreadores indexen archivos irrelevantes
-
-# Para cuando tengas dominio propio, aquí irá el sitemap
-# Sitemap: https://tudominio.com/sitemap.xml
+Sitemap: https://ninabim.com/sitemap.xml

@@ -14,6 +14,6 @@
       "type": "image/ico"
     }
   ],
-  "start_url": "https://www.ninabim.com/",
+  "start_url": ".",
   "display": "standalone"
 }

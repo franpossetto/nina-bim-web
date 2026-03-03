@@ -28,12 +28,21 @@ export const useSunriseSunset = (): UseSunriseSunsetResult => {
     axios
       .get(SUNRISE_SUNSET_API)
       .then((response) => {
+        if (response.data.status !== "OK" || !response.data.results?.sunrise || !response.data.results?.sunset) {
+          setError(true);
+          return;
+        }
+        
         const { sunrise, sunset } = response.data.results;
         setSunriseSunset({ sunrise, sunset });
         try {
           const date = new Date().toISOString().split("T")[0];
           localStorage.setItem("sunriseSunset", JSON.stringify({ sunrise, sunset, date }));
-        } catch {}
+        } catch (e) {
+          if (process.env.NODE_ENV !== "production") {
+            console.error("Error setting localStorage for sunriseSunset:", e);
+          }
+        }
       })
       .catch(() => {
         setError(true);
