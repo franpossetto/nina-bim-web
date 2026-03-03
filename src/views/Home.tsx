@@ -1,6 +1,6 @@
 "use client";
 
-import { IGitHubResponse, useFetch } from "../components/useFetch";
+import { useFetch } from "../components/useFetch";
 import { useSunriseSunset } from "../components/useSunriseSunset";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
@@ -38,9 +38,9 @@ const getInitialIsDay = (): boolean => {
 };
 
 export const Home = () => {
-  const { release }: IGitHubResponse | any = useFetch();
+  const { release } = useFetch();
   const { sunriseSunset } = useSunriseSunset();
-  const link: string = release?.asset;
+  const link = release?.asset;
 
   const [isDay, setIsDay] = useState<boolean>(getInitialIsDay);
   const [ninaLogo, setNinaLogo] = useState(() => getInitialIsDay() ? logoday : logonight);

@@ -1,5 +1,5 @@
 import { PurgeCSS } from "purgecss";
-import { writeFileSync, readdirSync, statSync } from "fs";
+import { writeFileSync, readdirSync, statSync, existsSync } from "fs";
 
 const CSS_DIR = "out/_next/static/css";
 const CONTENT_GLOBS = [
@@ -29,6 +29,11 @@ const SAFELIST = {
     /^styles-module/,
   ],
 };
+
+if (!existsSync(CSS_DIR)) {
+  console.error(`\n❌ PurgeCSS: directory not found: ${CSS_DIR}. Skipping.`);
+  process.exit(0);
+}
 
 const cssFiles = readdirSync(CSS_DIR).filter((f) => f.endsWith(".css"));
 

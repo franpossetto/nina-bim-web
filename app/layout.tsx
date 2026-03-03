@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/css/style.css";
@@ -43,13 +44,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://api.sunrise-sunset.org" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.github.com" crossOrigin="anonymous" />
+        <link id="dynamic-favicon" rel="icon" href="/favicon-day.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
