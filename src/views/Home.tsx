@@ -1,10 +1,11 @@
-import { IGitHubResponse, useFetch } from "../components/useFetch";
+"use client";
+
+import { useFetch } from "../components/useFetch";
 import { useSunriseSunset } from "../components/useSunriseSunset";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import logoday from "../assets/image/logo/day/nina_logo_black.webp";
 import logonight from "../assets/image/logo/night/nina_logo_white.webp";
-import "../css/style.css";
 import { useEffect, useState } from "react";
 import {
   ninaBackground,
@@ -21,31 +22,37 @@ const isDaytimeInMorteros = (sunrise: string, sunset: string): boolean => {
 };
 
 const getInitialIsDay = (): boolean => {
+  if (typeof window === "undefined") return true;
   try {
     const cached = localStorage.getItem("sunriseSunset");
     if (cached) {
       const { sunrise, sunset, date } = JSON.parse(cached);
       const today = new Date().toISOString().split("T")[0];
-      if (!date || date === today) {
+      if (
+        typeof date === "string" && date === today &&
+        typeof sunrise === "string" && typeof sunset === "string" &&
+        !isNaN(new Date(sunrise).getTime()) && !isNaN(new Date(sunset).getTime())
+      ) {
         return isDaytimeInMorteros(sunrise, sunset);
       }
     }
   } catch {}
-  // Fallback: estimate based on typical Morteros daylight hours (UTC-3),
-  // using UTC time converted to Morteros local time (UTC-3).
   const morterosHour = (new Date().getUTCHours() - 3 + 24) % 24;
   return morterosHour >= 7 && morterosHour < 20;
 };
 
 export const Home = () => {
-  const { release }: IGitHubResponse | any = useFetch();
+  const { release } = useFetch();
   const { sunriseSunset } = useSunriseSunset();
-  const link: string = release?.asset;
+  const link = release?.asset;
 
-  const initialIsDay = getInitialIsDay();
-  const [isDay, setIsDay] = useState<boolean>(initialIsDay);
-  const [ninaLogo, setNinaLogo] = useState(initialIsDay ? logoday : logonight);
+  const [isDay, setIsDay] = useState<boolean>(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const ninaLogo = isDay ? logoday : logonight;
+
+  useEffect(() => {
+    setIsDay(getInitialIsDay());
+  }, []);
 
   useEffect(() => {
     if (!sunriseSunset) return;
@@ -54,18 +61,16 @@ export const Home = () => {
   }, [sunriseSunset]);
 
   useEffect(() => {
-    setNinaLogo(isDay ? logoday : logonight);
-    
-    // Cambiar dinámicamente el favicon según isDay
     const faviconLink = document.getElementById("dynamic-favicon") as HTMLLinkElement;
     if (faviconLink) {
-      faviconLink.href = isDay 
-        ? `${process.env.PUBLIC_URL}/favicon-day.png` 
-        : `${process.env.PUBLIC_URL}/favicon-night.png`;
+      faviconLink.href = isDay
+        ? "/favicon-day.png"
+        : "/favicon-night.png";
     }
   }, [isDay]);
 
   const download = () => {
+    if (!link) return;
     window.location.assign(link);
   };
   return (
@@ -83,13 +88,13 @@ export const Home = () => {
             >
               <div style={{ position: "relative", display: "inline-block" }}>
                 <img
-                  src={ninaLogo}
-                  className="img-fluid animate__bounceIn"
+                  src={typeof ninaLogo === "object" ? (ninaLogo as any).src : ninaLogo}
+                  className="img-fluid animate__animated animate__bounceIn"
                   alt="Nina for Revit - Company Logo"
-                  style={{ cursor: "pointer" }}
                   width="1140"
                   height="450"
-                  decoding="async"
+                  {...{ fetchPriority: "high" }}
+                  decoding="sync"
                 />
                 
                 <div 
@@ -135,6 +140,7 @@ export const Home = () => {
               <button
                 type="button"
                 className={ninaBtnColor(isDay)}
+                disabled={!link}
                 onClick={download}
                 aria-label={`Download latest release ${release?.name || ''}`}
               >

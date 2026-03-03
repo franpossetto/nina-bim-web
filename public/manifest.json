@@ -4,16 +4,16 @@
   "description": "A collection of tiny tools for Autodesk Revit.",
   "icons": [
     {
-      "src": "../assets/icon/nina_favicon_white.ico",
+      "src": "./assets/icon/nina_favicon_white.ico",
       "sizes": "48x48",
       "type": "image/ico"
     },
     {
-      "src": "../assets/icon/nina_favicon_black.ico",
+      "src": "./assets/icon/nina_favicon_black.ico",
       "sizes": "48x48",
       "type": "image/ico"
     }
   ],
-  "start_url": "https://www.ninabim.com/",
+  "start_url": ".",
   "display": "standalone"
 }

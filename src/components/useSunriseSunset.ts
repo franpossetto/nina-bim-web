@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const MORTEROS_LAT = -30.7167;
@@ -22,25 +21,40 @@ export const useSunriseSunset = (): UseSunriseSunsetResult => {
   const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
+    const controller = new AbortController();
     setLoading(true);
     setError(false);
 
-    axios
-      .get(SUNRISE_SUNSET_API)
-      .then((response) => {
-        const { sunrise, sunset } = response.data.results;
+    fetch(SUNRISE_SUNSET_API, { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status !== "OK" || !data.results?.sunrise || !data.results?.sunset) {
+          setError(true);
+          return;
+        }
+        const { sunrise, sunset } = data.results;
         setSunriseSunset({ sunrise, sunset });
         try {
           const date = new Date().toISOString().split("T")[0];
           localStorage.setItem("sunriseSunset", JSON.stringify({ sunrise, sunset, date }));
-        } catch {}
+        } catch (e) {
+          if (process.env.NODE_ENV !== "production") {
+            console.error("Error setting localStorage for sunriseSunset:", e);
+          }
+        }
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.name === "AbortError") return;
         setError(true);
       })
       .finally(() => {
         setLoading(false);
       });
+
+    return () => controller.abort();
   }, []);
 
   return { sunriseSunset, loading, error };

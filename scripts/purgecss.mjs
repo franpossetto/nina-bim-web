@@ -1,0 +1,67 @@
+import { PurgeCSS } from "purgecss";
+import { writeFileSync, readdirSync, statSync, existsSync } from "fs";
+
+const CSS_DIR = "out/_next/static/css";
+const CONTENT_GLOBS = [
+  "out/**/*.html",
+  "out/_next/static/**/*.js",
+];
+
+const SAFELIST = {
+  standard: [
+    /^nina-/,
+    /^container/,
+    /^row/,
+    /^col-/,
+    /^d-/,
+    /^flex-/,
+    /^justify-/,
+    /^align-/,
+    /^text-/,
+    /^btn/,
+    /^img-/,
+    /^m-/,
+    /^p-/,
+    /^animate__/,
+    /^react-tooltip/,
+    /^__react-tooltip/,
+    /^core-styles-module/,
+    /^styles-module/,
+  ],
+};
+
+if (!existsSync(CSS_DIR)) {
+  console.error(`\n❌ PurgeCSS: directory not found: ${CSS_DIR}. Skipping.`);
+  process.exit(0);
+}
+
+const cssFiles = readdirSync(CSS_DIR).filter((f) => f.endsWith(".css"));
+
+console.log(`\n🧹 PurgeCSS: processing ${cssFiles.length} CSS file(s)…`);
+
+for (const file of cssFiles) {
+  try {
+    const filePath = `${CSS_DIR}/${file}`;
+    const before = statSync(filePath).size;
+
+    const result = await new PurgeCSS().purge({
+      content: CONTENT_GLOBS,
+      css: [filePath],
+      safelist: SAFELIST,
+      defaultExtractor: (content) => content.match(/[\w-/:,[\]]+/g) || [],
+    });
+
+    if (result[0]?.css) {
+      writeFileSync(filePath, result[0].css);
+      const after = Buffer.byteLength(result[0].css);
+      const saved = before > 0 ? ((1 - after / before) * 100).toFixed(1) : "0.0";
+      console.log(
+        `  ✓ ${file}  ${(before / 1024).toFixed(1)} KB → ${(after / 1024).toFixed(1)} KB  (-${saved}%)`
+      );
+    }
+  } catch (err) {
+    console.error(`  ✗ ${file}: ${err instanceof Error ? err.message : err}`);
+  }
+}
+
+console.log("✅ PurgeCSS done.\n");
