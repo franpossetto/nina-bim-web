@@ -1,5 +1,5 @@
 import { IGitHubResponse, useFetch } from "../components/useFetch";
-// import { ISunriseResponse, useSunrise } from "../components/useSunriseSunset";
+import { useSunriseSunset } from "../components/useSunriseSunset";
 import logoday from "../assets/image/logo/day/nina_logo_black.webp";
 import logonight from "../assets/image/logo/night/nina_logo_white.webp";
 import "../css/style.css";
@@ -13,35 +13,32 @@ import {
   ninaTitleSmallBold,
 } from "../helpers/style";
 
+const isDaytimeInMorteros = (sunrise: string, sunset: string): boolean => {
+  const now = new Date();
+  return now > new Date(sunrise) && now < new Date(sunset);
+};
+
 export const Home = () => {
   const { release }: IGitHubResponse | any = useFetch();
+  const { sunriseSunset } = useSunriseSunset();
   const link: string = release?.asset;
+
+  const [isDay, setIsDay] = useState<boolean>(false);
+  const [ninaLogo, setNinaLogo] = useState(logonight);
+
+  useEffect(() => {
+    if (!sunriseSunset) return;
+    const daytime = isDaytimeInMorteros(sunriseSunset.sunrise, sunriseSunset.sunset);
+    setIsDay(daytime);
+  }, [sunriseSunset]);
+
+  useEffect(() => {
+    setNinaLogo(isDay ? logoday : logonight);
+  }, [isDay]);
+
   const download = () => {
     window.location.assign(link);
   };
-  // const isday: boolean = false;
-  // const { sunrise }: ISunriseResponse | any = useSunrise();
-  // // console.log(sunrise);
-  const [isDay, setIsDay] = useState<boolean>(false);
-  const userTime = new Date();
-  const timeValue = userTime.getHours();
-  const [ninaLogo, setNinaLogo] = useState(logoday);
-
-  useEffect(() => {
-    if (timeValue > 6 && timeValue < 20) {
-      setIsDay(true);
-    } else {
-      setIsDay(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!isDay) {
-      setNinaLogo(logonight);
-    } else {
-      setNinaLogo(logoday);
-    }
-  }, [isDay]);
   return (
     <>
       <div id="nina-main" className={ninaBackground(isDay)}>
