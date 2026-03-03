@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const MORTEROS_LAT = -30.7167;
@@ -25,15 +24,17 @@ export const useSunriseSunset = (): UseSunriseSunsetResult => {
     setLoading(true);
     setError(false);
 
-    axios
-      .get(SUNRISE_SUNSET_API)
-      .then((response) => {
-        if (response.data.status !== "OK" || !response.data.results?.sunrise || !response.data.results?.sunset) {
+    fetch(SUNRISE_SUNSET_API)
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status !== "OK" || !data.results?.sunrise || !data.results?.sunset) {
           setError(true);
           return;
         }
-        
-        const { sunrise, sunset } = response.data.results;
+        const { sunrise, sunset } = data.results;
         setSunriseSunset({ sunrise, sunset });
         try {
           const date = new Date().toISOString().split("T")[0];

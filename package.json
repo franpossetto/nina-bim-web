@@ -10,27 +10,25 @@
     "@types/node": "^16.18.2",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
-    "animate.css": "^4.1.1",
-    "axios": "^1.1.3",
+    "bootstrap": "^5.2.2",
     "classnames": "^2.3.2",
+    "eslint-config-next": "^14.2.35",
+    "next": "^14.2.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
     "react-tooltip": "^5.30.0",
+    "sharp": "^0.34.5",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build && node scripts/purgecss.mjs",
+    "start": "next start",
+    "lint": "next lint"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "next/core-web-vitals"
   },
   "browserslist": {
     "production": [
@@ -43,5 +41,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^8.0.0",
+    "autoprefixer": "^10.4.27",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^11.2.0",
+    "purgecss": "^8.0.0"
   }
 }
