@@ -153,3 +153,16 @@
     margin-bottom: 1.5vh;
   }
 }
+
+/* Modern Tooltip Overlay */
+.modern-tooltip {
+  background-color: #4a4a4a !important;
+  color: #ffffff !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  font-family: inherit;
+  font-size: 0.85rem !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.2s ease-in-out !important;
+  z-index: 1000 !important;
+}
