@@ -46,7 +46,7 @@ export const Home = () => {
   const { sunriseSunset } = useSunriseSunset();
   const link = release?.asset;
 
-  const [isDay, setIsDay] = useState<boolean>(getInitialIsDay);
+  const [isDay, setIsDay] = useState<boolean>(true);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const ninaLogo = isDay ? logoday : logonight;
 
